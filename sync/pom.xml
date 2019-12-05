@@ -18,6 +18,7 @@
 
 	<modules>
 		<module>itemservice</module>
+		<module>authservice</module>
 	</modules>
 
 

@@ -8,9 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.pritamprasad</groupId>
-	<artifactId>itemservice</artifactId>
+	<artifactId>authservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>itemservice</name>
+	<name>authservice</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

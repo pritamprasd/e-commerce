@@ -3,6 +3,7 @@ package com.pritamprasad.itemservice.controller;
 import com.pritamprasad.itemservice.models.Item;
 import com.pritamprasad.itemservice.repo.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,9 @@ public class ItemsController {
 
     @PutMapping("/items")
     public ResponseEntity<Item> updateItem(@RequestBody Item item){
+        if(!itemRepository.existsById(item.getItemId())){
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(itemRepository.save(item));
     }
 

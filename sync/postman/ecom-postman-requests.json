@@ -79,7 +79,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"itemId\": \"abcfcac3-7b77-47a2-9852-e6ff7dc5d9c5\",\n    \"itemName\": \"Nvidia Zotac 2GB GPGPU\",\n    \"itemPrice\": 7900\n}",
+							"raw": "{\n    \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d43b\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": \"dummy_value\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -176,7 +176,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8091/items/0bed8d43-f29c-484e-94eb-052b78e2d43b",
+							"raw": "http://localhost:8091/items/e15008f1-75dc-4ac4-98ab-5a26c0d2645",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -184,7 +184,7 @@
 							"port": "8091",
 							"path": [
 								"items",
-								"0bed8d43-f29c-484e-94eb-052b78e2d43b"
+								"e15008f1-75dc-4ac4-98ab-5a26c0d2645"
 							]
 						}
 					},
@@ -255,7 +255,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d43b\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18000.0\n}",
+							"raw": "{\n    \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d4aa\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18050.0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -329,6 +329,141 @@
 							"body": "{\n    \"itemId\": \"9927b766-38a2-4e7b-84e9-e66d35503d10\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18050\n}"
 						}
 					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userName\": \"pritam002\",\n\t\"password\": \"jarvis@12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8092/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8092/users/21ce9e30-5613-4422-ac8f-012bd50c03bb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"21ce9e30-5613-4422-ac8f-012bd50c03bb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userName\": \"pritam001\",\n\t\"password\": \"jarvis@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8092/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userName\": \"pritam001\",\n\t\"password\": \"jarvis@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8092/validate/4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"validate",
+								"4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
