@@ -375,7 +375,13 @@
 					"name": "Get User",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:8092/users/21ce9e30-5613-4422-ac8f-012bd50c03bb",
 							"protocol": "http",
@@ -389,7 +395,52 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8092/users/21ce9e30-5613-4422-ac8f-012bd50c03bb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8092",
+									"path": [
+										"users",
+										"21ce9e30-5613-4422-ac8f-012bd50c03bb"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 05 Dec 2019 19:39:28 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"21ce9e30-5613-4422-ac8f-012bd50c03bb\",\n    \"userName\": \"pritam001\",\n    \"password\": \"\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Token",
