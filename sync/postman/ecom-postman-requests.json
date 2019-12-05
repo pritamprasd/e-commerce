@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "39e6d9ac-6aef-4ea2-8ae6-84c213d0abbf",
+		"name": "Ecommarce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "item-service",
+			"item": [
+				{
+					"name": "GET all items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GET all items example1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8091/items",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8091",
+									"path": [
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 05 Dec 2019 17:32:14 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"itemId\": \"2ebd7870-3472-41f3-80cf-2f878f90b164\",\n        \"itemName\": \"Asus x470-pro\",\n        \"itemPrice\": 15800\n    },\n    {\n        \"itemId\": \"7078a1fa-fed5-4666-a12a-be5ceb4bab6b\",\n        \"itemName\": \"Cooler master cabinet\",\n        \"itemPrice\": 6100\n    },\n    {\n        \"itemId\": \"a39d41ab-ee16-4b06-827a-39e33acccb7f\",\n        \"itemName\": \"Nvidia Zotac 2GB GPGPU\",\n        \"itemPrice\": 7900\n    },\n    {\n        \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d43b\",\n        \"itemName\": \"Ryzen 7 1700x\",\n        \"itemPrice\": 18000\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add A new Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemId\": \"abcfcac3-7b77-47a2-9852-e6ff7dc5d9c5\",\n    \"itemName\": \"Nvidia Zotac 2GB GPGPU\",\n    \"itemPrice\": 7900\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add A new Item",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d43b\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8091/items",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8091",
+									"path": [
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 05 Dec 2019 17:44:41 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"itemId\": \"e15008f1-75dc-4ac4-98ab-5a26c0d2645a\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18000\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove an Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/items/0bed8d43-f29c-484e-94eb-052b78e2d43b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"items",
+								"0bed8d43-f29c-484e-94eb-052b78e2d43b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove an Item",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8091/items/0bed8d43-f29c-484e-94eb-052b78e2d43b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8091",
+									"path": [
+										"items",
+										"0bed8d43-f29c-484e-94eb-052b78e2d43b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 05 Dec 2019 17:44:18 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d43b\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18000.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Item",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d43b\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18050.0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8091/items",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8091",
+									"path": [
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 05 Dec 2019 17:45:06 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"itemId\": \"9927b766-38a2-4e7b-84e9-e66d35503d10\",\n    \"itemName\": \"Ryzen 7 1700x\",\n    \"itemPrice\": 18050\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
