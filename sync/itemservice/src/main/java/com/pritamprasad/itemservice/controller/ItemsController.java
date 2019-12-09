@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,25 +20,25 @@ public class ItemsController {
     private ItemRepository itemRepository;
 
     @GetMapping("/items")
-    public ResponseEntity<List<Item>> getItems(){
+    public ResponseEntity<List<Item>> getItems() {
         return ResponseEntity.ok(itemRepository.findAll());
     }
 
     @PostMapping("/items")
-    public ResponseEntity<Item> addItem(@RequestBody Item item){
+    public ResponseEntity<Item> addItem(@RequestBody Item item) {
         return ResponseEntity.ok(itemRepository.save(item));
     }
 
     @PutMapping("/items")
-    public ResponseEntity<Item> updateItem(@RequestBody Item item){
-        if(!itemRepository.existsById(item.getItemId())){
+    public ResponseEntity<Item> updateItem(@RequestBody Item item) {
+        if (!itemRepository.existsById(item.getItemId())) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(itemRepository.save(item));
     }
 
     @DeleteMapping("/items/{itemid}")
-    public ResponseEntity removeItem(@PathVariable("itemid") UUID id){
+    public ResponseEntity removeItem(@PathVariable("itemid") UUID id) {
         itemRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
