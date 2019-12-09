@@ -19,18 +19,17 @@ public class TokenValidationFilter implements Filter {
     private RestTemplate restTemplate;
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
-    {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        if(req.getHeader("token") == null){
+        if (req.getHeader("token") == null) {
             throw new InvalidTokenException("No token provided in header");
         }
-        try{
-            ResponseEntity<String> reponse = restTemplate.getForEntity("http://localhost:8092/validate/"+req.getHeader("token"),String.class);
+        try {
+            ResponseEntity<String> reponse = restTemplate.getForEntity("http://localhost:8092/validate/" + req.getHeader("token"), String.class);
             if (reponse.getStatusCode().is2xxSuccessful()) {
                 chain.doFilter(request, response);
             }
-        } catch (RestClientException e){
+        } catch (RestClientException e) {
             throw new InvalidTokenException("Invalid token provided in header");
         }
     }
