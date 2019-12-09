@@ -1,4 +1,4 @@
-package com.pritamprasad.itemservice.models;
+package com.pritamprasad.productservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -11,19 +11,19 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "items")
+@Table(name = "products")
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties
-public class Item implements Serializable {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "item_id")
-    private UUID itemId;
+    @Column(name = "product_id")
+    private UUID productId;
 
-    @Column(name = "item_name")
-    private String itemName;
+    @Column(name = "product_name")
+    private String productName;
 
-    @Column(name = "item_price")
-    private Double itemPrice;
+    @Column(name = "product_price")
+    private Double productPrice;
 }

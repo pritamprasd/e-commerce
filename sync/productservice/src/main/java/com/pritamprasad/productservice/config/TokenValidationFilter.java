@@ -1,5 +1,6 @@
-package com.pritamprasad.itemservice.advice;
+package com.pritamprasad.productservice.config;
 
+import com.pritamprasad.productservice.exception.InvalidTokenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;
