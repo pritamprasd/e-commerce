@@ -19,6 +19,7 @@
 	<modules>
 		<module>productservice</module>
 		<module>authservice</module>
+		<module>servicediscovery</module>
 	</modules>
 
 
