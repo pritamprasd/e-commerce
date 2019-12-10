@@ -1,4 +1,4 @@
-package com.pritamprasad.authservice.advice;
+package com.pritamprasad.authservice.exception;
 
 public class InvalidTokenException extends RuntimeException{
 }

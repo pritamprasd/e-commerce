@@ -1,7 +1,7 @@
-package com.pritamprasad.authservice.advice;
+package com.pritamprasad.cartservice.advice;
 
-import com.pritamprasad.authservice.exception.InvalidTokenException;
-import com.pritamprasad.authservice.exception.UserNotFoundException;
+import com.pritamprasad.cartservice.exception.CartNotFoundException;
+import com.pritamprasad.cartservice.exception.InvalidTokenException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.hateoas.mediatype.vnderrors.VndErrors;
 import org.springframework.http.HttpStatus;
@@ -14,16 +14,15 @@ import java.util.Optional;
 
 @ControllerAdvice
 @RequestMapping(produces = "application/vnd.error+json")
-public class AuthControllerAdvice {
-    @ExceptionHandler({UserNotFoundException.class,EmptyResultDataAccessException.class})
+public class CartControllerAdvice {
+    @ExceptionHandler(CartNotFoundException.class)
     public ResponseEntity<VndErrors> notFoundException(final EmptyResultDataAccessException e) {
         return error(e, HttpStatus.NOT_FOUND, String.valueOf(System.currentTimeMillis()));
     }
 
     @ExceptionHandler(InvalidTokenException.class)
     public ResponseEntity<VndErrors> invalidTokenException(final EmptyResultDataAccessException e) {
-        e.setStackTrace(null);
-        return error(e, HttpStatus.INTERNAL_SERVER_ERROR, String.valueOf(System.currentTimeMillis()));
+        return error(e, HttpStatus.BAD_REQUEST, String.valueOf(System.currentTimeMillis()));
     }
 
     private ResponseEntity < VndErrors > error(final Exception exception, final HttpStatus httpStatus, final String logRef) {

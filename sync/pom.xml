@@ -20,6 +20,7 @@
 		<module>productservice</module>
 		<module>authservice</module>
 		<module>servicediscovery</module>
+		<module>cartservice</module>
 	</modules>
 
 

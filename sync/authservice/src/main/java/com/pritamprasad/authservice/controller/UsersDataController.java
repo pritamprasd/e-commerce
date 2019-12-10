@@ -1,7 +1,7 @@
 package com.pritamprasad.authservice.controller;
 
-import com.pritamprasad.authservice.advice.InvalidTokenException;
-import com.pritamprasad.authservice.advice.UserNotFoundException;
+import com.pritamprasad.authservice.exception.InvalidTokenException;
+import com.pritamprasad.authservice.exception.UserNotFoundException;
 import com.pritamprasad.authservice.models.User;
 import com.pritamprasad.authservice.repo.TokenRepository;
 import com.pritamprasad.authservice.repo.UserRepository;

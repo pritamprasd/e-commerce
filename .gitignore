@@ -6,3 +6,7 @@ sync/itemservice/.mvn/wrapper/maven-wrapper.properties
 sync/itemservice/.mvn/wrapper/maven-wrapper.jar
 *.jar
 sync/servicediscovery/.mvn/wrapper/maven-wrapper.jar
+sync/cartservice/.mvn/wrapper/maven-wrapper.jar
+sync/cartservice/.mvn/wrapper/maven-wrapper.jar
+sync/cartservice/.mvn/wrapper/maven-wrapper.properties
+*.jar

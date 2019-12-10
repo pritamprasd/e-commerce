@@ -1,7 +1,7 @@
 package com.pritamprasad.authservice.controller;
 
-import com.pritamprasad.authservice.advice.InvalidTokenException;
-import com.pritamprasad.authservice.advice.UserNotFoundException;
+import com.pritamprasad.authservice.exception.InvalidTokenException;
+import com.pritamprasad.authservice.exception.UserNotFoundException;
 import com.pritamprasad.authservice.models.Token;
 import com.pritamprasad.authservice.models.User;
 import com.pritamprasad.authservice.repo.TokenRepository;
@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
+
+import static com.pritamprasad.authservice.util.HelperFunctions.generateNewToken;
 
 @RestController
 public class ValidationController {
@@ -30,12 +32,6 @@ public class ValidationController {
             token = t.getTokenData();
         }
         return token;
-    }
-
-    private String generateNewToken() {
-        return UUID.randomUUID().toString().replace("-", "")
-                + UUID.randomUUID().toString().replace("-", "")
-                + UUID.randomUUID().toString().replace("-", "");
     }
 
     @GetMapping("/validate/{token}")
