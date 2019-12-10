@@ -20,7 +20,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8091/products",
+							"raw": "http://localhost:8091/products?productName=CUDA Book",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -28,12 +28,18 @@
 							"port": "8091",
 							"path": [
 								"products"
+							],
+							"query": [
+								{
+									"key": "productName",
+									"value": "CUDA Book"
+								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "GET all items example1",
+							"name": "GET all items ",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -68,6 +74,112 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"itemId\": \"2ebd7870-3472-41f3-80cf-2f878f90b164\",\n        \"itemName\": \"Asus x470-pro\",\n        \"itemPrice\": 15800\n    },\n    {\n        \"itemId\": \"7078a1fa-fed5-4666-a12a-be5ceb4bab6b\",\n        \"itemName\": \"Cooler master cabinet\",\n        \"itemPrice\": 6100\n    },\n    {\n        \"itemId\": \"a39d41ab-ee16-4b06-827a-39e33acccb7f\",\n        \"itemName\": \"Nvidia Zotac 2GB GPGPU\",\n        \"itemPrice\": 7900\n    },\n    {\n        \"itemId\": \"0bed8d43-f29c-484e-94eb-052b78e2d43b\",\n        \"itemName\": \"Ryzen 7 1700x\",\n        \"itemPrice\": 18000\n    }\n]"
+						},
+						{
+							"name": "GET all Products Search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8091/products?productName=CUDA Book",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8091",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "productName",
+											"value": "CUDA Book"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 10 Dec 2019 14:21:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"productId\": \"00844968-4c7b-4cf5-aae9-2d3feaa8b5be\",\n            \"productName\": \"CUDA Book\",\n            \"productPrice\": 2000\n        }\n    ],\n    \"pageable\": {\n        \"sort\": {\n            \"sorted\": false,\n            \"unsorted\": true,\n            \"empty\": true\n        },\n        \"offset\": 0,\n        \"pageNumber\": 0,\n        \"pageSize\": 20,\n        \"unpaged\": false,\n        \"paged\": true\n    },\n    \"totalPages\": 1,\n    \"last\": true,\n    \"totalElements\": 1,\n    \"size\": 20,\n    \"number\": 0,\n    \"sort\": {\n        \"sorted\": false,\n        \"unsorted\": true,\n        \"empty\": true\n    },\n    \"numberOfElements\": 1,\n    \"first\": true,\n    \"empty\": false\n}"
+						},
+						{
+							"name": "GET all Products Pagination, Sort",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8091/products?page=0&size=10&sort=productPrice",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8091",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "productPrice"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 10 Dec 2019 14:13:41 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"productId\": \"4b084c1b-fba8-4546-8097-7078696f8845\",\n            \"productName\": \"Philosophy Book\",\n            \"productPrice\": 100\n        },\n        {\n            \"productId\": \"0651a1be-346e-4c3e-8988-b767a02b2997\",\n            \"productName\": \"Python Book\",\n            \"productPrice\": 100\n        },\n        {\n            \"productId\": \"57770725-d114-4dcb-aae2-44b146a855e6\",\n            \"productName\": \"Julia Book\",\n            \"productPrice\": 190\n        },\n        {\n            \"productId\": \"844ff295-86ce-4862-a57c-9b99d7476354\",\n            \"productName\": \"C++ Book\",\n            \"productPrice\": 190\n        },\n        {\n            \"productId\": \"64ad00bd-f3af-4a01-aaaf-16d30a8fcef9\",\n            \"productName\": \"Blockchain Book\",\n            \"productPrice\": 650\n        },\n        {\n            \"productId\": \"f9d62cdf-6001-4c3d-8527-de5a74f0ff86\",\n            \"productName\": \"AI/ML Book\",\n            \"productPrice\": 690\n        },\n        {\n            \"productId\": \"e542824e-af65-44e0-81f5-50d66688d07b\",\n            \"productName\": \"C# Book\",\n            \"productPrice\": 730\n        },\n        {\n            \"productId\": \"b436d691-e68d-40fb-853f-ecc01e3b00f2\",\n            \"productName\": \"C Book\",\n            \"productPrice\": 760\n        },\n        {\n            \"productId\": \"7aeb43a7-2ed7-44a9-8d2f-5158c269dc7c\",\n            \"productName\": \"Psychology Book\",\n            \"productPrice\": 760\n        },\n        {\n            \"productId\": \"48356eff-ad14-4440-9f06-2fa875dc534f\",\n            \"productName\": \"OpenCV Book\",\n            \"productPrice\": 860\n        }\n    ],\n    \"pageable\": {\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"offset\": 0,\n        \"pageNumber\": 0,\n        \"pageSize\": 10,\n        \"unpaged\": false,\n        \"paged\": true\n    },\n    \"totalElements\": 12,\n    \"last\": false,\n    \"totalPages\": 2,\n    \"size\": 10,\n    \"number\": 0,\n    \"sort\": {\n        \"sorted\": true,\n        \"unsorted\": false,\n        \"empty\": false\n    },\n    \"numberOfElements\": 10,\n    \"first\": true,\n    \"empty\": false\n}"
 						}
 					]
 				},
@@ -371,7 +483,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userName\": \"pritam003\",\n\t\"password\": \"jarvis@12345\"\n}",
+							"raw": "{\n\t\"userName\": \"new_user9\",\n\t\"password\": \"jarvis@12345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -526,7 +638,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8092/validate/008cabd5e5d343e1afb7322525c8aa4d6e6b37f0d27f4a98b941e79e5f45ea0c577452794c124f6d82fa006a6b832b23",
+							"raw": "http://localhost:8092/validate/33fff9e25ad147b59ca2d26e11218a8bb4502e5046a24338a4ae38836a9b6eb8ce020c4d42bf4db6a8a5b3d69a5b0200",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -534,7 +646,7 @@
 							"port": "8092",
 							"path": [
 								"validate",
-								"008cabd5e5d343e1afb7322525c8aa4d6e6b37f0d27f4a98b941e79e5f45ea0c577452794c124f6d82fa006a6b832b23"
+								"33fff9e25ad147b59ca2d26e11218a8bb4502e5046a24338a4ae38836a9b6eb8ce020c4d42bf4db6a8a5b3d69a5b0200"
 							]
 						}
 					},
@@ -570,6 +682,78 @@
 							"path": [
 								"users",
 								"991715cd-b6b4-4562-bd0e-217df307a005"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "cart-service",
+			"item": [
+				{
+					"name": "View Cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8093/cart/02e0cf62-d2fe-4640-8ae8-7db6f8a46cc6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8093",
+							"path": [
+								"cart",
+								"02e0cf62-d2fe-4640-8ae8-7db6f8a46cc6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Products to Cart",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"02e0cf62-d2fe-4640-8ae8-7db6f8a46cc6\",\n    \"productsInCart\": [\n        \"52f0ce45-8b32-4242-9b90-621647edf81f\",\n        \"b436d691-e68d-40fb-853f-ecc01e3b00f2\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8093/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8093",
+							"path": [
+								"cart"
 							]
 						}
 					},
