@@ -8,9 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.pritamprasad</groupId>
-	<artifactId>authservice</artifactId>
+	<artifactId>productsservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>authservice</name>
+	<name>productservice</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -29,11 +29,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 			<version>2.2.0.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<dependency>

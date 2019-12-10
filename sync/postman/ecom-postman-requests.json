@@ -6,22 +6,28 @@
 	},
 	"item": [
 		{
-			"name": "item-service",
+			"name": "products-service",
 			"item": [
 				{
-					"name": "GET all items",
+					"name": "GET all Products",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8091/items",
+							"raw": "http://localhost:8091/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8091",
 							"path": [
-								"items"
+								"products"
 							]
 						}
 					},
@@ -66,7 +72,7 @@
 					]
 				},
 				{
-					"name": "Add A new Item",
+					"name": "Add A new Product",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -87,14 +93,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8091/items",
+							"raw": "http://localhost:8091/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8091",
 							"path": [
-								"items"
+								"products"
 							]
 						}
 					},
@@ -155,7 +161,7 @@
 					]
 				},
 				{
-					"name": "Remove an Item",
+					"name": "Remove a Product",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -176,14 +182,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8091/items/e15008f1-75dc-4ac4-98ab-5a26c0d2645",
+							"raw": "http://localhost:8091/products/e15008f1-75dc-4ac4-98ab-5a26c0d2645",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8091",
 							"path": [
-								"items",
+								"products",
 								"e15008f1-75dc-4ac4-98ab-5a26c0d2645"
 							]
 						}
@@ -242,7 +248,7 @@
 					]
 				},
 				{
-					"name": "Update Item",
+					"name": "Update Product",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -263,14 +269,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8091/items",
+							"raw": "http://localhost:8091/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8091",
 							"path": [
-								"items"
+								"products"
 							]
 						}
 					},
@@ -339,6 +345,21 @@
 				{
 					"name": "Add user",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "root@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "root0001",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -350,7 +371,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userName\": \"pritam002\",\n\t\"password\": \"jarvis@12345\"\n}",
+							"raw": "{\n\t\"userName\": \"pritam003\",\n\t\"password\": \"jarvis@12345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -374,6 +395,9 @@
 				{
 					"name": "Get User",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -383,7 +407,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8092/users/21ce9e30-5613-4422-ac8f-012bd50c03bb",
+							"raw": "http://localhost:8092/users/7e399235-26d6-4ef8-a84a-5f08837d5b1a",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -391,7 +415,7 @@
 							"port": "8092",
 							"path": [
 								"users",
-								"21ce9e30-5613-4422-ac8f-012bd50c03bb"
+								"7e399235-26d6-4ef8-a84a-5f08837d5b1a"
 							]
 						}
 					},
@@ -456,7 +480,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userName\": \"pritam001\",\n\t\"password\": \"jarvis@123\"\n}",
+							"raw": "{\n\t\"userName\": \"pritam003\",\n\t\"password\": \"jarvis@12345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -502,7 +526,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8092/validate/4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d",
+							"raw": "http://localhost:8092/validate/008cabd5e5d343e1afb7322525c8aa4d6e6b37f0d27f4a98b941e79e5f45ea0c577452794c124f6d82fa006a6b832b23",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -510,7 +534,42 @@
 							"port": "8092",
 							"path": [
 								"validate",
-								"4809ac3577cb491facaf06ccba74c5e5b7ababcdfbda4fcc8a3ead42f27cf184abf9fdb6a272492a8836c5e5b599505d"
+								"008cabd5e5d343e1afb7322525c8aa4d6e6b37f0d27f4a98b941e79e5f45ea0c577452794c124f6d82fa006a6b832b23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "root@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "root0001",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8092/users/991715cd-b6b4-4562-bd0e-217df307a005",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"991715cd-b6b4-4562-bd0e-217df307a005"
 							]
 						}
 					},

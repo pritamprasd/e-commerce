@@ -17,8 +17,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<modules>
-		<module>itemservice</module>
+		<module>productservice</module>
 		<module>authservice</module>
+		<module>servicediscovery</module>
 	</modules>
 
 
