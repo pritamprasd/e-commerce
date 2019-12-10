@@ -3,10 +3,13 @@ package com.pritamprasad.productservice.controller;
 import com.pritamprasad.productservice.models.Product;
 import com.pritamprasad.productservice.repo.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -16,8 +19,11 @@ public class ProductsController {
     private ProductsRepository productsRepository;
 
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getItems() {
-        return ResponseEntity.ok(productsRepository.findAll());
+    public ResponseEntity<Page<Product>> getItems(@Valid Product product, Pageable pageable) {
+        if(product != null){
+            return ResponseEntity.ok(productsRepository.findAll(Example.of(product),pageable));
+        }
+        return ResponseEntity.ok(productsRepository.findAll(pageable));
     }
 
     @PostMapping("/products")
