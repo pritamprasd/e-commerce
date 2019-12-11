@@ -18,6 +18,7 @@ public class ProductsController {
     @Autowired
     private ProductsRepository productsRepository;
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/products")
     public ResponseEntity<Page<Product>> getItems(@Valid Product product, Pageable pageable) {
         if(product != null){

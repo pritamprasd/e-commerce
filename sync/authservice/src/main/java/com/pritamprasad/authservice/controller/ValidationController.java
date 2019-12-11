@@ -23,6 +23,8 @@ public class ValidationController {
     @Autowired
     private TokenRepository tokenRepository;
 
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/token")
     public String getToken(@RequestBody User user) {
         String token = "";
