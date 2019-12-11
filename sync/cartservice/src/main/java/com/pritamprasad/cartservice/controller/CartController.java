@@ -32,7 +32,6 @@ public class CartController {
             return ResponseEntity.ok(cartRepository.save(cart));
         }
         return ResponseEntity.badRequest().build();
-
     }
 
     @PutMapping("/cart")
