@@ -5,7 +5,7 @@ import ls from 'local-storage'
 class ApiService{
 
     login(user){
-        axios.post("http://localhost:8092/token",user)
+        axios.post("http://localhost:8089/authservice/token",user)
         .then(res => ls.set('token', res.data))
         .catch(err => console.error(err))
     }
