@@ -27,7 +27,7 @@ class ProductsPage extends Component {
             }
         }
         Axios.get(
-            "http://localhost:8091/products",
+            "http://localhost:8089/productsservice/products",
             config
         )
             .then(r => r.data.content)

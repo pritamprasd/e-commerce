@@ -10,3 +10,6 @@ sync/cartservice/.mvn/wrapper/maven-wrapper.jar
 sync/cartservice/.mvn/wrapper/maven-wrapper.jar
 sync/cartservice/.mvn/wrapper/maven-wrapper.properties
 *.jar
+sync/apigateway/.mvn/wrapper/maven-wrapper.jar
+sync/apigateway/.mvn/wrapper/maven-wrapper.properties
+sync/apigateway/.mvn/wrapper/MavenWrapperDownloader.java
