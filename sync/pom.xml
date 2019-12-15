@@ -21,6 +21,7 @@
 		<module>authservice</module>
 		<module>servicediscovery</module>
 		<module>cartservice</module>
+		<module>apigateway</module>
 	</modules>
 
 
