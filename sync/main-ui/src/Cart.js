@@ -58,8 +58,10 @@ class Cart extends Component {
               console.log("Error found while making query 1")
               console.error(error);
             })
-        })
-      })
+            return []
+        })  
+      }
+      )
       .catch((error) => {
         console.log("Error found while making query 2")
         console.error(error);
