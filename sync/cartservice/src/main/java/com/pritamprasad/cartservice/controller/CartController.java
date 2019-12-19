@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.pritamprasad.cartservice.util.Constants.TOKEN;
@@ -20,14 +22,28 @@ public class CartController {
     @Autowired
     private CartRepository cartRepository;
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/cart/{userid}")
     public ResponseEntity<Cart> getCart(@PathVariable("userid") UUID userid) {
         return ResponseEntity.ok(cartRepository.findById(userid).orElseThrow(CartNotFoundException::new));
     }
 
+    @CrossOrigin(origins = "*")
+    @PostMapping("/cart/{userid}/{productid}")
+    public ResponseEntity<Cart> createCart(@PathVariable("userid") UUID userid, @PathVariable("productid") UUID productid) {
+        Cart c = cartRepository.findById(userid).orElseThrow(CartNotFoundException::new);
+        ArrayList<UUID> productsInCart = Optional.ofNullable(c.getProductsInCart()).orElseGet(ArrayList::new);
+        if(productsInCart.contains(productid)){
+            //TODO: To add multiple same item in cart
+        }
+        productsInCart.add(productid);
+        c.setProductsInCart(productsInCart);
+        return ResponseEntity.ok(cartRepository.save(c));
+    }
+
     @PostMapping("/cart")
     public ResponseEntity<Cart> createCart(@RequestBody Cart cart) {
-        if(!cartRepository.findById(cart.getUserId()).isPresent()){
+        if (!cartRepository.findById(cart.getUserId()).isPresent()) {
             cart.setLastUpdated(System.currentTimeMillis());
             return ResponseEntity.ok(cartRepository.save(cart));
         }
@@ -41,9 +57,16 @@ public class CartController {
         return ResponseEntity.ok(cartRepository.save(cart));
     }
 
-    @DeleteMapping("/cart")
-    public ResponseEntity deleteCart(@PathVariable("userid") UUID userid) {
-        cartRepository.deleteById(userid);
+    @CrossOrigin(origins = "*")
+    @DeleteMapping("/cart/{userId}/{productId}")
+    public ResponseEntity deleteCart(@PathVariable("productId") UUID productId, @PathVariable("userId") UUID userId) {
+        Cart c = cartRepository.findById(userId).orElseThrow(CartNotFoundException::new);
+        ArrayList<UUID> productsInCart = Optional.ofNullable(c.getProductsInCart()).orElseGet(ArrayList::new);
+        if(productsInCart.size() != 0){
+            productsInCart.remove(productId);
+        }
+        c.setProductsInCart(productsInCart);
+        cartRepository.save(c);
         return ResponseEntity.ok().build();
     }
 }

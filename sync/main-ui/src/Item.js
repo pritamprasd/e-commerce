@@ -9,15 +9,16 @@ import axios from 'axios';
 import ls from 'local-storage'
 
 
-class Product extends Component {
+class Item extends Component {
     constructor(props) {
         super(props)
         this.state = {
             name: props.name,
             price: props.price,
-            productId: props.productId
+            productId: props.productId,
+            reloadParent: props.reloadParent
         }
-        this.onAddToCartButtonClick = this.onAddToCartButtonClick.bind(this)
+        this.onRemoveFromCartButtonClick = this.onRemoveFromCartButtonClick.bind(this)
     }
     componentDidUpdate(newProps) {
         if (this.state.productId !== newProps.productId) {
@@ -28,18 +29,19 @@ class Product extends Component {
             })
         }
     }
-    onAddToCartButtonClick() {
-        let addToCartUrl = "http://localhost:8089/cartservice/cart/" + ls.get('user') + "/" + this.state.productId;
-        console.log("addTocartUrl: " + addToCartUrl)
+    onRemoveFromCartButtonClick() {
+        let delFromCartUrl = "http://localhost:8089/cartservice/cart/" + ls.get('user') + "/" + this.state.productId;
+        console.log("delFromCartUrl: " + delFromCartUrl)
         let config = {
             headers: {
                 'token': ls.get('token') || "",
             }
         }
-        axios.post(addToCartUrl,null,config)
-            .then()
+        axios.delete(delFromCartUrl, config)
+        .then(this.state.reloadParent())
             .catch(err => console.error(err))
     }
+
     render() {
         const classes = makeStyles({
             card: {
@@ -65,7 +67,7 @@ class Product extends Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small" onClick={this.onAddToCartButtonClick}>Add to cart</Button>
+                        <Button size="small" onClick={this.onRemoveFromCartButtonClick}>Delete from cart</Button>
                     </CardActions>
                 </Card>
             </div>
@@ -73,4 +75,4 @@ class Product extends Component {
     }
 }
 
-export default Product;
+export default Item;
