@@ -3,6 +3,8 @@ import Product from "./Product";
 import "./ProductsPage.css";
 import ls from 'local-storage';
 import Axios from "axios";
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 class ProductsPage extends Component {
@@ -11,7 +13,6 @@ class ProductsPage extends Component {
         this.state = {
             products: []
         }
-
         this.onGetProductsButtonClick = this.onGetProductsButtonClick.bind(this)
         this.handleGetAllProductData = this.handleGetAllProductData.bind(this)
     }
@@ -40,17 +41,27 @@ class ProductsPage extends Component {
 
     }
     render() {
-        console.log("in render 1")
-        const productsList = this.state.products.map((prod) => <Product key={prod.productId} productId={prod.productId} name={prod.productName} price={prod.productPrice} />)
+        const productsList = this.state.products
+            .map((prod) => this.createProduct(prod))
         console.log(productsList)
         return (
             <div className="productsPage">
-                <button onClick={this.onGetProductsButtonClick}>
-                    Get Products</button>
-                <h2>Products</h2>
-                {productsList}
+                <Button variant="contained" color="primary" onClick={this.onGetProductsButtonClick}>
+                    Get Products
+                </Button>
+                <Grid container spacing={8} style={{ padding: 24 }}>
+                    {productsList}
+                </Grid>
             </div>
         );
+    }
+
+    createProduct(prod) {
+        return (
+            <Grid item xs={12} sm={6} lg={4} xl={3}>
+                <Product key={prod.productId} productId={prod.productId} name={prod.productName} price={prod.productPrice} />
+            </Grid> 
+        )
     }
 }
 

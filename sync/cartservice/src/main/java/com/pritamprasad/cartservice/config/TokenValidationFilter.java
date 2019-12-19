@@ -2,6 +2,7 @@ package com.pritamprasad.cartservice.config;
 
 import com.netflix.discovery.EurekaClient;
 import com.pritamprasad.cartservice.exception.InvalidTokenException;
+import com.pritamprasad.cartservice.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
@@ -31,18 +32,23 @@ public class TokenValidationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        if (req.getHeader("token") == null) {
-            throw new InvalidTokenException("No token provided in header");
-        }
-        try {
-            ResponseEntity<String> reponse = restTemplate.getForEntity(
-                    discoveryClient.getNextServerFromEureka(authService, false).getHomePageUrl() + "validate/" + req.getHeader("token"),
-                    String.class);
-            if (reponse.getStatusCode().is2xxSuccessful()) {
-                chain.doFilter(request, response);
+        if (!req.getMethod().equals("OPTIONS")) {
+            if (req.getHeader("token") == null) {
+                throw new InvalidTokenException("No token provided in header");
             }
-        } catch (RestClientException e) {
-            throw new InvalidTokenException("Invalid token provided in header");
+            try {
+                ResponseEntity<User> reponse = restTemplate.getForEntity(
+                        discoveryClient.getNextServerFromEureka(authService, false).getHomePageUrl() + "validate/" + req.getHeader("token"),
+                        User.class);
+                if (reponse.getStatusCode().is2xxSuccessful()) {
+
+                    chain.doFilter(request, response);
+                }
+            } catch (RestClientException e) {
+                throw new InvalidTokenException("Invalid token provided in header");
+            }
+        } else {
+            chain.doFilter(request, response);
         }
     }
 }

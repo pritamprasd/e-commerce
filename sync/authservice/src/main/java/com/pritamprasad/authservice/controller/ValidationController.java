@@ -36,6 +36,7 @@ public class ValidationController {
         return token;
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/validate/{token}")
     public ResponseEntity<User> validateToken(@PathVariable("token") String token){
         Token t = tokenRepository.findByTokenData(token).orElseThrow(InvalidTokenException::new);

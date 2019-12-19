@@ -1,5 +1,6 @@
 package com.pritamprasad.productservice.controller;
 
+import com.pritamprasad.productservice.exception.ProductNotFoundException;
 import com.pritamprasad.productservice.models.Product;
 import com.pritamprasad.productservice.repo.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,17 @@ public class ProductsController {
     private ProductsRepository productsRepository;
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/products/{productid}")
+    public ResponseEntity<Product> getByProductId(@PathVariable("productid") UUID productId) {
+        Product p = productsRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
+        return ResponseEntity.ok(p);
+    }
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/products")
     public ResponseEntity<Page<Product>> getItems(@Valid Product product, Pageable pageable) {
-        if(product != null){
-            return ResponseEntity.ok(productsRepository.findAll(Example.of(product),pageable));
+        if (product != null) {
+            return ResponseEntity.ok(productsRepository.findAll(Example.of(product), pageable));
         }
         return ResponseEntity.ok(productsRepository.findAll(pageable));
     }
