@@ -4,6 +4,7 @@ import Axios from "axios";
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Item from "./Item";
+import { Typography } from "@material-ui/core";
 
 
 
@@ -12,14 +13,15 @@ class Cart extends Component {
     super(props)
     this.state = {
       products: [],
-      productsContentList: []
+      productsContentList: [],
+      cartTotal: 0.0
     }
-    this.reload= this.reload.bind(this)
+    this.reload = this.reload.bind(this)
     this.createProduct = this.createProduct.bind(this)
     this.onGetProductsButtonClick = this.onGetProductsButtonClick.bind(this)
   }
   onGetProductsButtonClick() {
-    this.setState({ 
+    this.setState({
       productsContentList: []
     })
     let config = {
@@ -50,16 +52,19 @@ class Cart extends Component {
               let r = res.data
               console.log("Respose get product===========")
               console.log(r)
-              this.setState({ 
-                productsContentList: this.state.productsContentList.concat([this.createProduct(r)])
+              this.setState({
+                productsContentList: this.state.productsContentList.concat([this.createProduct(r)]),
               })
-            })      
+            })
             .catch((error) => {
               console.log("Error found while making query 1")
               console.error(error);
             })
-            return []
-        })  
+          return []
+        })
+        this.setState({
+          cartTotal: r.data.cartTotal
+        })
       }
       )
       .catch((error) => {
@@ -67,7 +72,7 @@ class Cart extends Component {
         console.error(error);
       });
   }
-  reload(value){
+  reload(value) {
     this.setState({ productsContentList: this.productsContentList });
   }
   createProduct(prod) {
@@ -75,7 +80,7 @@ class Cart extends Component {
     console.log(prod)
     return (
       <Grid item xs={12} sm={6} lg={4} xl={3}>
-        <Item key={prod.productId} productId={prod.productId} name={prod.productName} price={prod.productPrice} reloadParent={this.reload}/>
+        <Item key={prod.productId} productId={prod.productId} name={prod.productName} price={prod.productPrice} reloadParent={this.reload} />
       </Grid>
     )
   }
@@ -87,6 +92,8 @@ class Cart extends Component {
         <Button variant="contained" color="primary" onClick={this.onGetProductsButtonClick}>
           View Cart
         </Button>
+        
+        <Typography>Cart Total: {this.state.cartTotal}</Typography>        
         <Grid container spacing={8} style={{ padding: 24 }}>
           {this.state.productsContentList}
         </Grid>

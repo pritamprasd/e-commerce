@@ -2,8 +2,10 @@ package com.pritamprasad.cartservice.controller;
 
 import com.pritamprasad.cartservice.exception.CartNotFoundException;
 import com.pritamprasad.cartservice.models.Cart;
+import com.pritamprasad.cartservice.models.Product;
 import com.pritamprasad.cartservice.repo.CartRepository;
 import com.pritamprasad.cartservice.service.AuthServiceConnector;
+import com.pritamprasad.cartservice.service.ProductServiceConnector;
 import com.pritamprasad.cartservice.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,9 @@ public class CartController {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private ProductServiceConnector productServiceConnector;
+
     @CrossOrigin(origins = "*")
     @GetMapping("/cart/{userid}")
     public ResponseEntity<Cart> getCart(@PathVariable("userid") UUID userid) {
@@ -30,14 +35,16 @@ public class CartController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/cart/{userid}/{productid}")
-    public ResponseEntity<Cart> createCart(@PathVariable("userid") UUID userid, @PathVariable("productid") UUID productid) {
+    public ResponseEntity<Cart> createCart(@PathVariable("userid") UUID userid, @PathVariable("productid") UUID productid, HttpServletRequest httpServletRequest) {
         Cart c = cartRepository.findById(userid).orElseThrow(CartNotFoundException::new);
         ArrayList<UUID> productsInCart = Optional.ofNullable(c.getProductsInCart()).orElseGet(ArrayList::new);
         if(productsInCart.contains(productid)){
             //TODO: To add multiple same item in cart
         }
+        Product p = productServiceConnector.getProduct(productid, httpServletRequest.getHeader("token"));
         productsInCart.add(productid);
         c.setProductsInCart(productsInCart);
+        c.setCartTotal(c.getCartTotal() + p.getProductPrice());
         return ResponseEntity.ok(cartRepository.save(c));
     }
 
@@ -59,13 +66,15 @@ public class CartController {
 
     @CrossOrigin(origins = "*")
     @DeleteMapping("/cart/{userId}/{productId}")
-    public ResponseEntity deleteCart(@PathVariable("productId") UUID productId, @PathVariable("userId") UUID userId) {
+    public ResponseEntity deleteCart(@PathVariable("productId") UUID productId, @PathVariable("userId") UUID userId, HttpServletRequest httpServletRequest) {
         Cart c = cartRepository.findById(userId).orElseThrow(CartNotFoundException::new);
+        Product p = productServiceConnector.getProduct(productId, httpServletRequest.getHeader("token"));
         ArrayList<UUID> productsInCart = Optional.ofNullable(c.getProductsInCart()).orElseGet(ArrayList::new);
         if(productsInCart.size() != 0){
             productsInCart.remove(productId);
         }
         c.setProductsInCart(productsInCart);
+        c.setCartTotal(c.getCartTotal() - p.getProductPrice());
         cartRepository.save(c);
         return ResponseEntity.ok().build();
     }

@@ -27,9 +27,9 @@ public class Cart implements Serializable {
     @Column(name = "products")
     private ArrayList<UUID> productsInCart;
 
-    //TODO: refresh when any put request
+    @Column(name = "cart_total")
+    private Double cartTotal = 0.0;
+
     @Column(name = "last_updated")
     private Long lastUpdated;
-
-
 }
