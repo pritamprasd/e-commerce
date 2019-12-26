@@ -19,7 +19,7 @@ Table of Contents
 ### Completed 
 #### Version 1
 An experiment with synchronous system and event driven system using e-commerce as an example.
-- Creating an ecommerce platform with [synchronous](/sync) API calls.
+- Created an ecommerce platform with [synchronous](/sync) API calls.
 
 ### Upcoming
 - Asynchronous architecture between services via Messaging Queues
@@ -32,4 +32,4 @@ All services within each implementation has their own documentation.
 - [sync](/sync) - contains services with synchronous API calls
 
 ## Improvements
-If you think the project can be improved, contribute as a developer by going through `CONTRIBUTIONS.md` or raise a Github issue to get your features added.
+If you think the project can be improved, contribute as a developer by going through `CONTRIBUTING.md` or raise a Github issue to get your features added.
