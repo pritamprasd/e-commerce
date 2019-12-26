@@ -23,4 +23,4 @@ This implementation uses REST API calls between the below services
    - Sample JSONs and examples which can be used via Postman REST Client
 
 ## Architecture
-<img src="/architecture/architecture.png" style="width: 60%" alt="architeture" />
+<img src="./architecture/architecture.png" alt="architeture" />
