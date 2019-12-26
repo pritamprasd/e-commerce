@@ -1,5 +1,8 @@
 # Synchronous API Services
 
+## Architecture
+<img src="./architecture/architecture.png" alt="architeture" />
+
 ## Pre-requisite
 - Java 8
 - Maven
@@ -21,6 +24,3 @@ This implementation uses REST API calls between the below services
    - A standalone Eureka Server for performing Service Discovery.
 - [postman](/postman) 
    - Sample JSONs and examples which can be used via Postman REST Client
-
-## Architecture
-<img src="./architecture/architecture.png" alt="architeture" />
