@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -77,5 +78,22 @@ public class CartController {
         c.setCartTotal(c.getCartTotal() - p.getProductPrice());
         cartRepository.save(c);
         return ResponseEntity.ok().build();
+    }
+
+    /**
+     * Clears all products from a cart
+     * @param userId
+     * @param httpServletRequest
+     * @return
+     */
+    @CrossOrigin(origins = "*")
+    @DeleteMapping("/cart/{userid}")
+    public ResponseEntity<Cart> deleteCart(@PathVariable("userid") UUID userId, HttpServletRequest httpServletRequest) {
+        Cart c = cartRepository.findById(userId).orElseThrow(CartNotFoundException::new);
+        c.setProductsInCart(new ArrayList<>());
+        c.setCartTotal(0.0);
+        c.setLastUpdated(System.currentTimeMillis());
+        cartRepository.save(c);
+        return ResponseEntity.ok(c);
     }
 }

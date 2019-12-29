@@ -19,6 +19,7 @@ class Cart extends Component {
     this.reload = this.reload.bind(this)
     this.createProduct = this.createProduct.bind(this)
     this.onGetProductsButtonClick = this.onGetProductsButtonClick.bind(this)
+    this.onCreateOrderButtonClick = this.onCreateOrderButtonClick.bind(this)
   }
   onGetProductsButtonClick() {
     this.setState({
@@ -36,6 +37,9 @@ class Cart extends Component {
       config
     )
       .then((r) => {
+        this.setState({
+          products: r.data.productsInCart
+        })
         r.data.productsInCart.map(productId => {
           let config = {
             headers: {
@@ -52,7 +56,7 @@ class Cart extends Component {
               let r = res.data
               console.log("Respose get product===========")
               console.log(r)
-              this.setState({
+              this.setState({                
                 productsContentList: this.state.productsContentList.concat([this.createProduct(r)]),
               })
             })
@@ -75,6 +79,24 @@ class Cart extends Component {
   reload(value) {
     this.setState({ productsContentList: this.productsContentList });
   }
+  onCreateOrderButtonClick() {
+    console.log("Create Order Button Clicked!!!")
+    console.log("-----------------")
+    let config = {
+      headers: {
+        'token': ls.get('token') || "",
+      }
+    }
+    const order = {
+      "userId": ls.get('user'),
+      "products": this.state.products
+    };
+    Axios.post("http://localhost:8089/ordersservice/orders", order, config)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => console.error(err))
+  }
   createProduct(prod) {
     console.log("CP======")
     console.log(prod)
@@ -87,16 +109,22 @@ class Cart extends Component {
   render() {
     console.log("productsContentList==============")
     console.log(this.state.productsContentList)
+    const createOrderButtonJSX = <Button variant="contained" color="primary" onClick={this.onCreateOrderButtonClick}>  Create Order </Button>
+    const createOrderButton = this.state.productsContentList !== null ? (this.state.productsContentList.length === 0 ? "" : createOrderButtonJSX) : ""
+    console.log("==============> " + createOrderButton)
     return (
       <div className="cartPage">
         <Button variant="contained" color="primary" onClick={this.onGetProductsButtonClick}>
           View Cart
         </Button>
-        
-        <Typography>Cart Total: {this.state.cartTotal}</Typography>        
+
+        <Typography>Cart Total: {this.state.cartTotal}</Typography>
         <Grid container spacing={8} style={{ padding: 24 }}>
           {this.state.productsContentList}
         </Grid>
+        <div>
+          {createOrderButton}
+        </div>
       </div>
     );
   }

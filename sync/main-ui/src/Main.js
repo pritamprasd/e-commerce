@@ -8,6 +8,7 @@ import ProductsPage from "./ProductsPage";
 import Cart from "./Cart";
 import Home from "./Home";
 import "./index.css";
+import OrdersPage from "./OrdersPage";
 
 
 class Main extends Component {    
@@ -20,11 +21,13 @@ class Main extends Component {
                         <li><NavLink exact to="/">Home</NavLink></li>
                         <li><NavLink to="/products">Products</NavLink></li>
                         <li><NavLink to="/cart">Cart</NavLink></li>
+                        <li><NavLink to="/orders">Orders</NavLink></li>
                     </ul>
                     <div className="content">
                         <Route exact path="/" component={Home} />
                         <Route path="/products" component={ProductsPage} />                        
-                        <Route path="/cart" component={Cart} />                        
+                        <Route path="/cart" component={Cart} /> 
+                        <Route path="/orders" component={OrdersPage} />                        
                     </div>
                 </div>
             </HashRouter>            
