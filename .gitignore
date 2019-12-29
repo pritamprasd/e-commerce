@@ -1,4 +1,6 @@
-
+.idea
+*.iml
+target/
 .vscode/settings.json
 *.jar
 sync/itemservice/.mvn/wrapper/maven-wrapper.jar
