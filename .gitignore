@@ -13,3 +13,10 @@ sync/cartservice/.mvn/wrapper/maven-wrapper.properties
 sync/apigateway/.mvn/wrapper/maven-wrapper.jar
 sync/apigateway/.mvn/wrapper/maven-wrapper.properties
 sync/apigateway/.mvn/wrapper/MavenWrapperDownloader.java
+sync/ordersservice/.mvn/wrapper/maven-wrapper.jar
+sync/ordersservice/.mvn/wrapper/maven-wrapper.properties
+sync/ordersservice/.mvn/wrapper/maven-wrapper.jar
+*.jar
+sync/ordersservice/.mvn/wrapper/maven-wrapper.jar
+sync/ordersservice/.mvn/wrapper/MavenWrapperDownloader.java
+sync/ordersservice/.mvn/wrapper/maven-wrapper.jar
