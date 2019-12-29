@@ -22,6 +22,7 @@
 		<module>servicediscovery</module>
 		<module>cartservice</module>
 		<module>apigateway</module>
+		<module>ordersservice</module>
 	</modules>
 
 
