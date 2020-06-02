@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container } from "@material-ui/core";
 import axios from 'axios';
 import ls from 'local-storage'
+import {API_GATEWAY_URL} from './Constants'
 
 
 class Home extends Component {
@@ -23,7 +24,7 @@ class Home extends Component {
             "userName": this.state.username,
             "password": this.state.password
         };
-        axios.post("http://localhost:8089/authservice/token", user)
+        axios.post(API_GATEWAY_URL +"/authservice/token", user)
             .then(res => {
                 this.setState({
                     "token": res.data
@@ -32,7 +33,7 @@ class Home extends Component {
                 console.log("token: " + this.state.token)
             })
             .then(() => {
-                let userInforUrl = "http://localhost:8089/authservice/validate/".concat(String(this.state.token))
+                let userInforUrl = API_GATEWAY_URL +"/authservice/validate/".concat(String(this.state.token))
                 console.log("User info url: " + userInforUrl)
                 axios.get(userInforUrl)
                     .then(response => response.data)
