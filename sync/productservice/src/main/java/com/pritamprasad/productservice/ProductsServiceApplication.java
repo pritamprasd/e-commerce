@@ -14,8 +14,6 @@ import java.util.UUID;
 @SpringBootApplication
 public class ProductsServiceApplication {
 
-	private ProductsRepository productsRepository;
-
 	public static void main(String[] args) {
 		SpringApplication.run(ProductsServiceApplication.class, args);
 	}
