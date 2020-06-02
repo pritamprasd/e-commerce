@@ -1,10 +1,9 @@
-<img src="/images/e-commerce-logo.png" style="width: 50%" alt="logo" />
+# Open Source e-commerce project
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpritamprasd%2Fe-commerce%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/pritamprasd/e-commerce/goto?ref=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c311e7c484194e1f84691952e9a2c9c3)](https://www.codacy.com/manual/pritam.prasd/e-commerce?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pritamprasd/e-commerce&amp;utm_campaign=Badge_Grade)
 
-# Open Source e-commerce project
 
 Table of Contents
 ===================
