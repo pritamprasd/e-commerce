@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import ls from 'local-storage'
+import {API_GATEWAY_URL} from './Constants'
+
 
 
 class Item extends Component {
@@ -30,7 +32,7 @@ class Item extends Component {
         }
     }
     onRemoveFromCartButtonClick() {
-        let delFromCartUrl = "http://localhost:8089/cartservice/cart/" + ls.get('user') + "/" + this.state.productId;
+        let delFromCartUrl = API_GATEWAY_URL +"/cartservice/cart/" + ls.get('user') + "/" + this.state.productId;
         console.log("delFromCartUrl: " + delFromCartUrl)
         let config = {
             headers: {

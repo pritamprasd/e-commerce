@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Item from "./Item";
 import { Typography } from "@material-ui/core";
+import {API_GATEWAY_URL} from './Constants'
+
 
 
 
@@ -30,7 +32,7 @@ class Cart extends Component {
         'token': ls.get('token') || "",
       }
     }
-    let viewCartUrl = "http://localhost:8089/cartservice/cart/" + ls.get('user')
+    let viewCartUrl = API_GATEWAY_URL +"/cartservice/cart/" + ls.get('user')
     console.log("viewCart url: " + viewCartUrl)
     Axios.get(
       viewCartUrl,
@@ -46,7 +48,7 @@ class Cart extends Component {
               'token': ls.get('token') || "",
             }
           }
-          let getProductUrl = "http://localhost:8089/productsservice/products/" + productId
+          let getProductUrl = API_GATEWAY_URL +"/productsservice/products/" + productId
           console.log("viewCart url: " + getProductUrl)
           Axios.get(
             getProductUrl,
@@ -91,7 +93,7 @@ class Cart extends Component {
       "userId": ls.get('user'),
       "products": this.state.products
     };
-    Axios.post("http://localhost:8089/ordersservice/orders", order, config)
+    Axios.post(API_GATEWAY_URL +"/ordersservice/orders", order, config)
       .then(res => {
         console.log(res.data)
       })

@@ -3,6 +3,8 @@ import { Grid, Button } from "@material-ui/core";
 import ls from 'local-storage';
 import Axios from "axios";
 import Order from "./Order";
+import {API_GATEWAY_URL} from './Constants'
+
 
 class OrdersPage extends Component {
 
@@ -20,7 +22,7 @@ class OrdersPage extends Component {
                 'token': ls.get('token') || "",
             }
         }
-        let viewOrdersUrl = "http://localhost:8089/ordersservice/orders/user/" + ls.get('user')
+        let viewOrdersUrl = API_GATEWAY_URL +"/ordersservice/orders/user/" + ls.get('user')
         console.log("viewCart url: " + viewOrdersUrl)
         Axios.get(
             viewOrdersUrl,

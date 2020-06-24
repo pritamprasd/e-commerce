@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import ls from 'local-storage'
+import {API_GATEWAY_URL} from './Constants'
+
 
 
 class Product extends Component {
@@ -29,7 +31,7 @@ class Product extends Component {
         }
     }
     onAddToCartButtonClick() {
-        let addToCartUrl = "http://localhost:8089/cartservice/cart/" + ls.get('user') + "/" + this.state.productId;
+        let addToCartUrl = API_GATEWAY_URL +"/cartservice/cart/" + ls.get('user') + "/" + this.state.productId;
         console.log("addTocartUrl: " + addToCartUrl)
         let config = {
             headers: {
