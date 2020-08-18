@@ -1,4 +1,4 @@
-# Synchronous API Services
+# Synchronous API Module
 
 This module is a set of independent services(supposed to connect to different databases) mostly using spring-boot security, jpa modules.
 This project module should just be taken as a educational structure of spring-boot/react based projects using e-commerce platform as an example.
@@ -111,4 +111,29 @@ EUREKA_HOST=localhost
 ```
 After running the service you can visit eureka dashboard at : http://localhost:8761/
 
-**Step 3** :
+**Step 3** : Now you can start other services with the same environment variables used. First we need user registration based services, hence auth-service started next.
+In order to use CRUD operations for user, you need to use `/users` endpoint with `Basic authentication` for the **Root** e-com user. The **Root** user-name & password need to be configured in [application.properties](./authservice/src/main/resources/application.properties) in *root.user* and *root-pass* field.
+
+**Step 4** : Perform `POST /users` to create a new user with below payload:
+```json
+{
+	"userName": "test_user",
+	"password": "test@123"
+}
+```
+
+**Step 5** : Perform `POST token` with the credentials we just used in step 4, example payload:
+```json
+{
+	"userName": "test_user",
+	"password": "test@123"
+}
+```
+Response will be a newly generated token for the user having a string length of 96 alphanumeric-chars(current-design).
+
+Each time this step is performed a new token is generated, and all previous tokens become invalid(in-dev use case, **never** to be used in prods).
+This *token* then can be used for any other service communications by including it in **token** header.
+
+**Step 6** : Start products service with previously used environment variables and make a `GET /products` having the token in **token** header. Response should be a set of Products in JSON format.
+
+*Note:* By default there will be no products in database, to add some dummy products to databse uncomment line 22 `dataSetup()` in [SetupData] (./productservice/src/main/java/com/pritamprasad/productservice/config/SetupData.java) file.
