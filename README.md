@@ -14,7 +14,7 @@ This project module should just be taken as a educational structure of spring-bo
 
 ## Architecture
 Here's a component diagram of current services:
-<img src="./architecture/architecture.png" alt="architeture" />
+<img src="./sync/architecture/architecture.png" alt="architeture" />
 
 ## Techs:
 - Java 8, Sprint-boot, Maven
@@ -146,7 +146,7 @@ This *token* then can be used for any other service communications by including 
 *Note:* By default there will be no products in database, to add some dummy products to databse uncomment line 22 `dataSetup()` in [SetupData] (./productservice/src/main/java/com/pritamprasad/productservice/config/SetupData.java) file.
 
 Below comm diagram depicts it clearly:
-<img src="./architecture/getproducts.svg" alt="getproducts" />
+<img src="./sync/architecture/getproducts.svg" alt="getproducts" />
 
 
 
@@ -161,7 +161,7 @@ Below comm diagram depicts it clearly:
 ### Structure
 Architecture and Instructions on the usage are mentioned in each of the individual implementations. 
 All services within each implementation has their own documentation.
-- [sync](/sync) - contains services with synchronous API calls
+- [sync](./sync) - contains services with synchronous API calls
 
 ### Improvements
 If you think the project can be improved, contribute as a developer by going through `CONTRIBUTING.md` or raise a Github issue to get your features added.
