@@ -3,6 +3,7 @@
 This module is a set of independent services(supposed to connect to different databases) mostly using spring-boot security, jpa modules.
 This project module should just be taken as a educational structure of spring-boot/react based projects using e-commerce platform as an example.
 
+
 ## Architecture
 Here's a component diagram of current services:
 <img src="./architecture/architecture.png" alt="architeture" />
@@ -84,7 +85,7 @@ e-com sync module uses REST API calls between the below services
    Sample JSONs and examples which can be used via Postman REST Client.
    
    
-### Service-port binding (for local development):
+## Service-port binding (for local development):
 | Service-name       | application.name | Default Port |
 | :----------------: | :--------------: | :----------: | 
 | service-discovery  | eureka-server    | 8761         |
@@ -96,7 +97,7 @@ e-com sync module uses REST API calls between the below services
 | orders-service     | ordersservice    | 8094         |
 
 
-### How to setup local environment with minimum set of services?
+## How to setup local environment with minimum set of services?
 **Step 1**: Setup a local postgres instance.
 
 **Step 2**: Start servicediscovery service from sync/servicediscovery. As the name suggests this service manages host address of other services and provides a one host to call all the services.
