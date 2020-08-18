@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -27,7 +28,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private String rootUserRole="ROOT";
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -37,6 +37,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/users").hasRole(rootUserRole)
                 .antMatchers(HttpMethod.PUT,"/users").hasRole(rootUserRole)
                 .antMatchers(HttpMethod.DELETE,"/users").hasRole(rootUserRole)
+                .antMatchers(HttpMethod.GET,"users").hasRole(rootUserRole)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
@@ -48,7 +49,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser(rootUser).password("{noop}"+rootUserPass).roles(rootUserRole);
+    public void configureGlobal(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder) throws Exception {
+        auth.inMemoryAuthentication().passwordEncoder(passwordEncoder).withUser(rootUser).password(rootUserPass).roles(rootUserRole);
     }
+
+
 }

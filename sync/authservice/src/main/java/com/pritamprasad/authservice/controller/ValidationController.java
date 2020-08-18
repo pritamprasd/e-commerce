@@ -8,6 +8,7 @@ import com.pritamprasad.authservice.repo.TokenRepository;
 import com.pritamprasad.authservice.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -23,13 +24,15 @@ public class ValidationController {
     @Autowired
     private TokenRepository tokenRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @CrossOrigin(origins = "*")
     @PostMapping("/token")
     public String getToken(@RequestBody User user) {
         String token = "";
         User user1 = userRepository.findByUserName(user.getUserName()).orElseThrow(UserNotFoundException::new);
-        if (user.getPassword().equals(user1.getPassword())) {
+        if (passwordEncoder.matches(user.getPassword(),user1.getPassword())) {
             Token t = tokenRepository.save(new Token(user1.getUserId(), generateNewToken(), System.currentTimeMillis()));
             token = t.getTokenData();
         }
