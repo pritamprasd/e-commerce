@@ -40,6 +40,7 @@ e-com sync module uses REST API calls between the below services
    2. users CRUD operations
    3. token issuer
    4. token validator
+   
    In order to use CRUD operations for user, you need to use `/users` endpoint with `Basic authentication` for the **Root** e-com user. The **Root** user-name & password need to be configured in [application.properties](./authservice/src/main/resources/application.properties) in *root.user* and *root-pass* field. You'll notice that the password is encoded with [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) encoder. To encode your passwords use below command on [spring-cli](https://search.maven.org/classic/#search%7Cga%7C1%7Ca%3A%22spring-boot-cli%22)
    ```
    spring encodepassword <your-password-in-plain-text>   
@@ -63,7 +64,8 @@ e-com sync module uses REST API calls between the below services
 | Service-name       | application.name | Default Port |
 | :----------------: | :--------------: | :----------: | 
 | service-discovery  | eureka-server    | 8761         |
-|                    |                  |              |
+| api-gateway        | apigateway       | 8089         |
+| auth-service       | authservice      | 8092         |
 
 
 ### How to setup local environment with minimum set of services?
