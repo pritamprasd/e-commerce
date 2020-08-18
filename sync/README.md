@@ -48,22 +48,41 @@ e-com sync module uses REST API calls between the below services
    ```
    spring encodepassword <your-password-in-plain-text>   
    ```
- #### Use cases:
+##### Use cases:
  - To create a new user (`POST /users`)
  - To get token for inter-service communication. (Each service request internal/external requires token to be passed as a mode of authentication) `POST /token`
  - To validate a token `GET /validate/{token}`
   
 ### [Cart service](./cartservice) 
-   - Independent service where `carts` related information are stored, retrieved and deleted via this service.
+   Independent service where `carts` related information are stored, retrieved and deleted via this service.
+   A cart is created when a user registers in the system via `/users` endpoint, and that cart stays static throughout a users lifecycle.
+   
+   Here's code from auth-service when a cart is created:
+   ```java
+    @PostMapping("/users")
+    public ResponseEntity<User> addItem(@RequestBody User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User u = userRepository.save(user);
+        Token t = tokenRepository.save(new Token(u.getUserId(), generateNewToken(), System.currentTimeMillis()));
+        cartServiceConnector.createCart(u.getUserId(),t.getTokenData());
+        return ResponseEntity.ok(maskSecret(user));
+    }
+   ```
+   
 ### [Product service](./productservice)
-   - Independent service where `products` related information are stored, retrieved and deleted via this service.
+   Independent service where `products` related information are stored, retrieved and deleted via this service.
+   Provides CRUD Operations to product resource.
+   
 ### [Orders Service](./ordersservice)
-   - TBD
+   - Provides CRUD Operation on Order resource.
+   
 ### [User Interface](./main-ui)
-   - Front end for the `e-commerce` site. This interacts with the different services via `apigateway`.
+   Front end for the `e-commerce` site. This interacts with the different services via `apigateway`.
+   Written in ReactJS, this is a very minimal UI, just to explain the api request-resoonse flows.
 
 ### [API Requests](./postman) 
-   - Sample JSONs and examples which can be used via Postman REST Client
+   Sample JSONs and examples which can be used via Postman REST Client.
+   
    
 ### Service-port binding (for local development):
 | Service-name       | application.name | Default Port |
