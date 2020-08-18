@@ -8,7 +8,7 @@
 - [ ] 
 ### authservice:
 - [ ] In authservice, users get created even if cart service request fails --> add inter service transaction.
-- [ ] store password using bcrypt.
+- [x] store password using bcrypt.
 - [ ] 
 
 
