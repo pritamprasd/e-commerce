@@ -137,3 +137,6 @@ This *token* then can be used for any other service communications by including 
 **Step 6** : Start products service with previously used environment variables and make a `GET /products` call having the *token*(received token in `POST token` call) in **token** header(product service will verfy this token with `GET /validate/{token}` of auth-service). Response should be a set of Products in JSON format.
 
 *Note:* By default there will be no products in database, to add some dummy products to databse uncomment line 22 `dataSetup()` in [SetupData] (./productservice/src/main/java/com/pritamprasad/productservice/config/SetupData.java) file.
+
+Below comm diagram depicts it clearly:
+<img src="./architecture/getproducts.svg" alt="getproducts" />
