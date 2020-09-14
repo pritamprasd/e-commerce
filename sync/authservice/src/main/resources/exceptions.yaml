@@ -1,0 +1,13 @@
+exceptions:
+  - id: ex101
+    description: Occurs when user does not exist in db
+    user_message: Invalid user details, please try again
+  - id: ex103
+    description: Token not found in database
+    user_message: Invalid token, please try again
+  - id: ex105
+    description: Create Cart POST request failed
+    user_message: Create user failed as some dependent service call failed
+  - id: ex107
+    description: Unhandled Exception Occured, check log. search for term "UnhandledInternalException"
+    user_message: Internal Error Ocurred

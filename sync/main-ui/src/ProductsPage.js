@@ -42,8 +42,7 @@ class ProductsPage extends Component {
 
     }
     render() {
-        const productsList = this.state.products
-            .map((prod) => this.createProduct(prod))
+        const productsList = this.state.products.map((prod) => this.createProduct(prod))
         console.log(productsList)
         return (
             <div className="productsPage">

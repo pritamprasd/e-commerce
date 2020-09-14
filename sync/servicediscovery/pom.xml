@@ -7,7 +7,6 @@
         <artifactId>sync</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.pritamprasad</groupId>
     <artifactId>servicediscovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>servicediscovery</name>

@@ -3,6 +3,8 @@ import { Container } from "@material-ui/core";
 import axios from 'axios';
 import ls from 'local-storage'
 import {API_GATEWAY_URL} from './Constants'
+import Button from '@material-ui/core/Button';
+
 
 
 class Home extends Component {
@@ -16,6 +18,7 @@ class Home extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeUserName = this.handleChangeUserName.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     handleSubmit(event) {
@@ -54,6 +57,14 @@ class Home extends Component {
     handleChangePassword(event) {
         this.setState({ password: event.target.value });
     }
+    handleLogout(event){
+        this.setState({
+            username : "",
+            password: ""
+        });
+        ls.remove('user');
+        ls.remove('token');
+    }
 
 
     render() {
@@ -72,6 +83,7 @@ class Home extends Component {
                         <input type="submit" value="Submit" />
                     </form>
                 </Container>
+                <Button variant="contained" color="primary" onClick={this.handleLogout}>Logout</Button>
             </div>
         );
     }
