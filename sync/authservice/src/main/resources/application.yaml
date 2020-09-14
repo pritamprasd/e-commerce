@@ -1,0 +1,33 @@
+server:
+  port: 8092
+spring:
+  application:
+    name: authservice
+  mvc:
+    dispatch-options-request: true
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://${DB_HOST}:5432/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST}:8761/eureka/
+root:
+  user: root0001 #Replace your root user-password here to be used for adding users to e-com app
+  pass: $2a$10$WlRhrMQte0GL37wzAl2BSOef9NRl0J6T2KkPzzL/Do9y.F3pqKKXO
+cartservice:
+  name: cartservice
+logging:
+  level:
+    root: error

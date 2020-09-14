@@ -1,5 +1,6 @@
 package com.pritamprasad.authservice.controller;
 
+import com.pritamprasad.authservice.exception.AuthServiceException;
 import com.pritamprasad.authservice.exception.InvalidTokenException;
 import com.pritamprasad.authservice.exception.UserNotFoundException;
 import com.pritamprasad.authservice.models.Token;
@@ -29,7 +30,7 @@ public class ValidationController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/token")
-    public String getToken(@RequestBody User user) {
+    public String getToken(@RequestBody User user) throws AuthServiceException {
         String token = "";
         User user1 = userRepository.findByUserName(user.getUserName()).orElseThrow(UserNotFoundException::new);
         if (passwordEncoder.matches(user.getPassword(),user1.getPassword())) {
@@ -41,7 +42,7 @@ public class ValidationController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/validate/{token}")
-    public ResponseEntity<User> validateToken(@PathVariable("token") String token){
+    public ResponseEntity<User> validateToken(@PathVariable("token") String token) throws AuthServiceException {
         Token t = tokenRepository.findByTokenData(token).orElseThrow(InvalidTokenException::new);
         User u = userRepository.findById(t.getUserId()).orElseThrow(UserNotFoundException::new);
         u.setPassword("");

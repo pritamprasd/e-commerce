@@ -1,6 +1,7 @@
 package com.pritamprasad.authservice.service;
 
 import com.netflix.discovery.EurekaClient;
+import com.pritamprasad.authservice.exception.CreateCartFailedException;
 import com.pritamprasad.authservice.exception.UserNotFoundException;
 import com.pritamprasad.authservice.models.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class CartServiceConnector {
     @Value("${cartservice.name}")
     private String cartService;
 
-    public void createCart(UUID userId, String token){
+    public void createCart(UUID userId, String token) throws CreateCartFailedException {
         HttpHeaders headers = new HttpHeaders();
         headers.set("token", token);
         Cart cart = new Cart();
@@ -41,10 +42,10 @@ public class CartServiceConnector {
                     entity,
                     String.class);
             if (!reponse.getStatusCode().is2xxSuccessful()) {
-                throw new UserNotFoundException();
+                throw new CreateCartFailedException(reponse.getStatusCode().toString());
             }
         } catch (RestClientException e) {
-            throw new UserNotFoundException();
+            throw new CreateCartFailedException();
         }
     }
 }

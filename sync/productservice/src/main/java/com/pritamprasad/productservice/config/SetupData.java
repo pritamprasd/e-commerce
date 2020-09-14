@@ -19,7 +19,7 @@ public class SetupData implements CommandLineRunner {
         /**
          * Uncomment dataSetup(); line to add initial data to database
          */
-        dataSetup();
+        //dataSetup();
     }
 
     private void dataSetup(){
