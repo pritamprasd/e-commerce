@@ -43,7 +43,7 @@ e-com sync module uses REST API calls between the below services
    - token issuer
    - token validator
    
-   In order to use CRUD operations for user, you need to use `/users` endpoint with `Basic authentication` for the **Root** e-com user. The **Root** user-name & password need to be configured in [application.properties](./authservice/src/main/resources/application.properties) in *root.user* and *root-pass* field. 
+   In order to use CRUD operations for user, you ned to use `/users` endpoint with `Basic authentication` for the **Root** e-com user. The **Root** user-name & password need to be configured in [application.properties](./authservice/src/main/resources/application.properties) in *root.user* and *root-pass* field. 
    
    You'll notice that the password is encoded with [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) encoder. To encode your passwords use below command on [spring-cli](https://search.maven.org/classic/#search%7Cga%7C1%7Ca%3A%22spring-boot-cli%22)
    ```
@@ -140,3 +140,12 @@ This *token* then can be used for any other service communications by including 
 
 Below comm diagram depicts it clearly:
 <img src="./architecture/getproducts.svg" alt="getproducts" />
+
+## JMX Scripts for tesing:
+### Functional Testing
+##### path: [./sync/jmx-tests/Ecom_Services_Test_sync_module.jmx](./jmx-tests/Ecom_Services_Test_sync_module.jmx)
+Configure variables in Environemnt `User Defined Varaiables Config Element`
+- ROOT_USER_NAME,ROOT_USER_PASS : same as provided in [./authservice/src/main/resources/application.properties](./authservice/src/main/resources/application.properties)
+- HOST: ip address or hostname of system where your services are running
+
+

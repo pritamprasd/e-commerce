@@ -1,1 +1,1 @@
-export const API_GATEWAY_URL = "http://192.168.0.132:8089"
+export const API_GATEWAY_URL = "http://localhost:8089"

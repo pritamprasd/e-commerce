@@ -37,7 +37,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/users").hasRole(rootUserRole)
                 .antMatchers(HttpMethod.PUT,"/users").hasRole(rootUserRole)
                 .antMatchers(HttpMethod.DELETE,"/users").hasRole(rootUserRole)
-                .antMatchers(HttpMethod.GET,"users").hasRole(rootUserRole)
+                .antMatchers(HttpMethod.GET,"/users").hasRole(rootUserRole)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
