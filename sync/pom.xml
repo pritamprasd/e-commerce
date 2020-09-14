@@ -22,5 +22,6 @@
         <module>cartservice</module>
         <module>apigateway</module>
         <module>ordersservice</module>
+        <module>ecom-sync-commons</module>
     </modules>
 </project>
