@@ -10,3 +10,5 @@ To start:
 
 TODO:
 - disable other links except Home, when user is not logged in(local storage dont ahve token & user).
+- use cart response from POST /cart/{user-id}/{productid}
+- use POST /orders response, on creating order
