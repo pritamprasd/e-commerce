@@ -7,7 +7,7 @@
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.0.5",
     "@testing-library/user-event": "^11.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "contentful": "^7.14.4",
     "local-storage": "^2.0.0",
     "react": "^16.13.1",
